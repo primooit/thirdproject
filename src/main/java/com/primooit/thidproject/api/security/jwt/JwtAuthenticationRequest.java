@@ -9,7 +9,7 @@ public class JwtAuthenticationRequest implements Serializable {
     private String password;
 
     public JwtAuthenticationRequest() {
-        super();
+        
     }
 
     public JwtAuthenticationRequest(String email, String password) {

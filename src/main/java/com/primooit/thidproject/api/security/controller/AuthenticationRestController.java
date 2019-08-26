@@ -25,6 +25,7 @@ import com.primooit.thidproject.api.service.UserService;
 @RestController
 @CrossOrigin(origins = "*")
 public class AuthenticationRestController {
+	
 	@Autowired
     private AuthenticationManager authenticationManager;
 
@@ -67,5 +68,7 @@ public class AuthenticationRestController {
             return ResponseEntity.badRequest().body(null);
         }
     }
+    
+    
 
 }

@@ -23,6 +23,7 @@ import com.primooit.thidproject.api.security.jwt.JwtAuthenticationTokenFilter;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
 
 	@Autowired
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
@@ -57,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers(
-                        HttpMethod.GET,
+                        HttpMethod.POST,
                         "/",
                         "/*.html",
                         "/favicon.ico",
@@ -70,4 +71,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.headers().cacheControl();
     }
+	
+
 }
