@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import com.primooit.thidproject.api.enums.PriorityEnum;
 import com.primooit.thidproject.api.enums.StatusEnum;
 
-public class Ticket {
+public class Bots {
 
 	@Id
 	

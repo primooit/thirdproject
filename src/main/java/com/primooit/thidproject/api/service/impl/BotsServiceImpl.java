@@ -9,44 +9,44 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import com.primooit.thidproject.api.repository.ChangeStatusRepository;
-import com.primooit.thidproject.api.repository.TicketRepository;
+import com.primooit.thidproject.api.repository.BotsRepository;
 import com.primooit.thidproject.api.security.entity.ChangeStatus;
-import com.primooit.thidproject.api.security.entity.Ticket;
-import com.primooit.thidproject.api.service.TicketService;
+import com.primooit.thidproject.api.security.entity.Bots;
+import com.primooit.thidproject.api.service.BotsService;
 
 @Component
-public class TicketServiceImpl implements TicketService {
+public class BotsServiceImpl implements BotsService {
 	
 	@Autowired
-	private TicketRepository ticketRepository;
+	private BotsRepository botsRepository;
 	
 	@Autowired
 	private ChangeStatusRepository changeStatusRepository;
 
-	public Ticket createOrUpdate(Ticket ticket) {
-		return this.ticketRepository.save(ticket);
+	public Bots createOrUpdate(Bots bots) {
+		return this.botsRepository.save(bots);
 	}
 
-	public Optional<Ticket> findById(String id) {
-		return this.ticketRepository.findById(id);
+	public Optional<Bots> findById(String id) {
+		return this.botsRepository.findById(id);
 	}
 
 	public void delete(String id) {
-		this.ticketRepository.deleteById(id);
+		this.botsRepository.deleteById(id);
 	}
 
-	public Page<Ticket> listTicket(int page, int count) {
+	public Page<Bots> listTicket(int page, int count) {
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.findAll(pages);
+		return this.botsRepository.findAll(pages);
 	}
 	
-	public Iterable<Ticket> findAll() {
-		return this.ticketRepository.findAll();
+	public Iterable<Bots> findAll() {
+		return this.botsRepository.findAll();
 	}
 	
-	public Page<Ticket> findByCurrentUser(int page, int count, String userId) {
+	public Page<Bots> findByCurrentUser(int page, int count, String userId) {
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.findByUserIdOrderByDateDesc(pages,userId);
+		return this.botsRepository.findByUserIdOrderByDateDesc(pages,userId);
 	}
 
 	public ChangeStatus createChangeStatus(ChangeStatus changeStatus) {
@@ -57,28 +57,28 @@ public class TicketServiceImpl implements TicketService {
 		return this.changeStatusRepository.findByTicketIdOrderByDateChangeStatusDesc(ticketId);
 	}
 	
-	public Page<Ticket> findByParameters(int page, int count,String title,String status,String priority) {
+	public Page<Bots> findByParameters(int page, int count,String title,String status,String priority) {
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.
+		return this.botsRepository.
 				findByTitleIgnoreCaseContainingAndStatusAndPriorityOrderByDateDesc(title, status, priority, pages);
 	}
 	
-	public Page<Ticket> findByParametersAndCurrentUser(int page, int count,String title,String status,
+	public Page<Bots> findByParametersAndCurrentUser(int page, int count,String title,String status,
 			String priority,String userId) {
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.
+		return this.botsRepository.
 				findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDateDesc(title, status, priority, pages);
 	}
 	
-	public Page<Ticket> findByNumber(int page, int count,Integer number){
+	public Page<Bots> findByNumber(int page, int count,Integer number){
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.findByNumber(number, pages);
+		return this.botsRepository.findByNumber(number, pages);
 	}
 	
-	public Page<Ticket> findByParametersAndAssignedUser(int page, int count,String title,String status,
+	public Page<Bots> findByParametersAndAssignedUser(int page, int count,String title,String status,
 			String priority,String assignedUserId) {
 		Pageable pages = PageRequest.of(page, count);
-		return this.ticketRepository.
+		return this.botsRepository.
 				findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDateDesc(title, status, priority, pages);
 	}
 

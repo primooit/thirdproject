@@ -15,7 +15,7 @@ public class ChangeStatus {
 	private String id;
 	
 	@DBRef
-	private Ticket ticket;
+	private Bots bots;
 	
 	@DBRef
 	private User userChange;
@@ -32,12 +32,12 @@ public class ChangeStatus {
 		this.id = id;
 	}
 
-	public Ticket getTicket() {
-		return ticket;
+	public Bots getTicket() {
+		return bots;
 	}
 
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	public void setTicket(Bots bots) {
+		this.bots = bots;
 	}
 
 	public User getUserChange() {

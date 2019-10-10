@@ -1,6 +1,7 @@
 package com.primooit.thidproject.api.security.jwt;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,12 +16,42 @@ public class JwtUser implements UserDetails {
 	private final String username;
 	private final String password;
 	private final Collection<? extends GrantedAuthority> authorities;
+	
+	private final String phone;
+	private final String cpf;
+	private final String adress;
+	private final Date expiration;
+	private final String salesman;
 
-	public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+	
+	
+
+	/*public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.authorities = authorities;
+	}*/
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+
+	public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities,
+			String phone, String cpf, String adress, Date expiration, String salesman) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.authorities = authorities;
+		this.phone = phone;
+		this.cpf = cpf;
+		this.adress = adress;
+		this.expiration = expiration;
+		this.salesman = salesman;
 	}
 
 	@JsonIgnore
@@ -31,6 +62,26 @@ public class JwtUser implements UserDetails {
 	@Override
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public Date getExpiration() {
+		return expiration;
+	}
+
+	public String getSalesman() {
+		return salesman;
 	}
 
 	@JsonIgnore

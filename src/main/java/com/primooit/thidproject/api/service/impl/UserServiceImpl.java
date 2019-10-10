@@ -18,6 +18,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	public UserServiceImpl() {
+		
+	}
+	
+	public UserServiceImpl(UserRepository userRepository) {
+		
+		this.userRepository = userRepository;
+	}
+
 	public User findByEmail(String email) {
 		return this.userRepository.findByEmail(email);
 	}

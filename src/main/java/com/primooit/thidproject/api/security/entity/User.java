@@ -1,5 +1,7 @@
 package com.primooit.thidproject.api.security.entity;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -26,6 +28,13 @@ public class User {
 	private String password;
 	
 	private ProfileEnum profile;
+	
+	private String phone;
+	
+	private String cpf;
+	private String adress;
+	private Date expiration;
+	private String salesman;
 
 	public String getId() {
 		return id;
@@ -59,6 +68,45 @@ public class User {
 		this.profile = profile;
 	}
 	
-	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public Date getExpiration() {
+		return expiration;
+	}
+
+	public void setExpiration(Date expiration) {
+		this.expiration = expiration;
+	}
+
+	public String getSalesman() {
+		return salesman;
+	}
+
+	public void setSalesman(String salesman) {
+		this.salesman = salesman;
+	}
+
 	
 }

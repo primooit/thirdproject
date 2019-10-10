@@ -1,4 +1,4 @@
-package com.primooit.thidprojectapi.controller;
+package com.primooit.thidproject.api.controller;
 
 import java.util.Optional;
 
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mongodb.DuplicateKeyException;
+import com.primooit.thidproject.api.response.Response;
 import com.primooit.thidproject.api.security.entity.User;
 import com.primooit.thidproject.api.service.UserService;
-import com.primooit.thidprojectapi.response.Response;
 
 @RestController
 @RequestMapping("/api/user")
@@ -55,6 +55,7 @@ public class UserController {
 			return ResponseEntity.badRequest().body(response);
 		} catch (Exception e) {
 			response.getErrors().add(e.getMessage());
+			return ResponseEntity.badRequest().body(response);
 		}
 		return ResponseEntity.ok(response);
 	}
@@ -62,6 +63,7 @@ public class UserController {
 	private void validateCreateUser(User user, BindingResult result) {
 		if(user.getEmail() ==null) {
 			result.addError(new ObjectError("User", "Email no information"));
+			return;
 		}
 	}
 	

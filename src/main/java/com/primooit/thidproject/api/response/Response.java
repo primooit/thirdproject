@@ -1,4 +1,4 @@
-package com.primooit.thidprojectapi.response;
+package com.primooit.thidproject.api.response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Response<T> {
 	}
 
 	public List<String> getErrors() {
-		if(this.errors ==null) {
+		if(this.errors == null) {
 			this.errors = new ArrayList<String>();
 		}
 		return errors;
