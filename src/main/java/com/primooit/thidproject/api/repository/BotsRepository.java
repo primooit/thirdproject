@@ -12,13 +12,13 @@ public interface BotsRepository extends MongoRepository<Bots, String>{
 	
 	Page<Bots> findByUserIdOrderByDateDesc(Pageable pages, String userId);
 	
-	Page<Bots> findByTitleIgnoreCaseContainingAndStatusAndPriorityOrderByDateDesc(
+	Page<Bots> findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingOrderByDateDesc(
 			String title, String status, String priority, Pageable pages);
 	
-	Page<Bots> findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDateDesc(
+	Page<Bots> findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndUserIdOrderByDateDesc(
 			String title, String status, String priority, Pageable pages);
 	
-	Page<Bots> findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDateDesc
+	Page<Bots> findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssignedUserIdOrderByDateDesc
 	(String title, String status, String priority, Pageable pages);
 	
 	Page<Bots> findByNumber(Integer number, Pageable pages);

@@ -60,14 +60,14 @@ public class BotsServiceImpl implements BotsService {
 	public Page<Bots> findByParameters(int page, int count,String title,String status,String priority) {
 		Pageable pages = PageRequest.of(page, count);
 		return this.botsRepository.
-				findByTitleIgnoreCaseContainingAndStatusAndPriorityOrderByDateDesc(title, status, priority, pages);
+				findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssignedUserIdOrderByDateDesc(title, status, priority, pages);
 	}
 	
 	public Page<Bots> findByParametersAndCurrentUser(int page, int count,String title,String status,
 			String priority,String userId) {
 		Pageable pages = PageRequest.of(page, count);
 		return this.botsRepository.
-				findByTitleIgnoreCaseContainingAndStatusAndPriorityAndUserIdOrderByDateDesc(title, status, priority, pages);
+				findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssignedUserIdOrderByDateDesc(title, status, priority, pages);
 	}
 	
 	public Page<Bots> findByNumber(int page, int count,Integer number){
@@ -79,7 +79,7 @@ public class BotsServiceImpl implements BotsService {
 			String priority,String assignedUserId) {
 		Pageable pages = PageRequest.of(page, count);
 		return this.botsRepository.
-				findByTitleIgnoreCaseContainingAndStatusAndPriorityAndAssignedUserIdOrderByDateDesc(title, status, priority, pages);
+				findByTitleIgnoreCaseContainingAndStatusContainingAndPriorityContainingAndAssignedUserIdOrderByDateDesc(title, status, priority, pages);
 	}
 
 

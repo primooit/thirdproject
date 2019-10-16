@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+//DUVIDAS PENDENTES
+
 public class JwtUser implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -17,21 +19,21 @@ public class JwtUser implements UserDetails {
 	private final String password;
 	private final Collection<? extends GrantedAuthority> authorities;
 	
-	private final String phone;
+	/*private final String phone;
 	private final String cpf;
 	private final String adress;
 	private final Date expiration;
 	private final String salesman;
-
+*/
 	
 	
 
-	/*public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+	public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.authorities = authorities;
-	}*/
+	}
 
 
 	public static long getSerialversionuid() {
@@ -40,7 +42,7 @@ public class JwtUser implements UserDetails {
 
 	
 
-	public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities,
+	/*public JwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities,
 			String phone, String cpf, String adress, Date expiration, String salesman) {
 		super();
 		this.id = id;
@@ -52,7 +54,7 @@ public class JwtUser implements UserDetails {
 		this.adress = adress;
 		this.expiration = expiration;
 		this.salesman = salesman;
-	}
+	}*/
 
 	@JsonIgnore
 	public String getId() {
@@ -63,7 +65,7 @@ public class JwtUser implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
-	
+	/*
 	public String getPhone() {
 		return phone;
 	}
@@ -82,7 +84,7 @@ public class JwtUser implements UserDetails {
 
 	public String getSalesman() {
 		return salesman;
-	}
+	}*/
 
 	@JsonIgnore
 	@Override

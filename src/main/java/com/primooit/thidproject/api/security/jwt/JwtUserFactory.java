@@ -18,12 +18,12 @@ public class JwtUserFactory {
 	                user.getId(),
 	                user.getEmail(),
 	                user.getPassword(),
-	                mapToGrantedAuthorities(user.getProfile()),
+	                mapToGrantedAuthorities(user.getProfile())/*,
 	                user.getPhone(),
 	                user.getCpf(),
 	                user.getAdress(),
 	                user.getExpiration(),
-	                user.getSalesman()
+	                user.getSalesman()*/
 	        );
 	    }
 

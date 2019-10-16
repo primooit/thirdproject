@@ -11,18 +11,16 @@ import com.primooit.thidproject.api.security.entity.Bots;
 @Component
 public interface BotsService {
 	
-	Bots createOrUpdate(Bots ticket);
+	Bots createOrUpdate(Bots bots);
 	
-	Optional<Bots> findById(String id);
+	Optional<Bots> findById(String bot);
 	
 	void delete(String id);
 	
 	Page<Bots> listTicket(int page, int count);
 	
 	ChangeStatus createChangeStatus(ChangeStatus changeStatus);
-	
-	Iterable<ChangeStatus> listChangeStatus(String ticketId);
-	
+
 	Page<Bots> findByCurrentUser(int page, int count, String userId);
 	
 	Page<Bots> findByParameters(int page, int count, String title, String status, String priority);
