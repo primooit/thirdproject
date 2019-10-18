@@ -14,37 +14,29 @@ public class Posts {
 
 	@Id
 	
-	private String postId;
-	
-	@DBRef(lazy = true)
-	private Posts posts;
-	
-	private Date date;
-	
 	private String title;
 	
+	private Date date;
+		
 	private Integer number;
+	
+	private StatusEnum status;
+	
+	private PriorityEnum priority;
+	
+	@DBRef(lazy = true)
+	private User assignedUser;
 	
 	private String description;
 	
 	private String image;
-		
 
-
-	public String getPost() {
-		return postId;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setPost(String post) {
-		this.postId = post;
-	}
-
-	public Posts getPosts() {
-		return posts;
-	}
-
-	public void setPosts(Posts posts) {
-		this.posts = posts;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Date getDate() {
@@ -55,13 +47,6 @@ public class Posts {
 		this.date = date;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public Integer getNumber() {
 		return number;
@@ -88,5 +73,4 @@ public class Posts {
 	}
 
 
-	
 }
