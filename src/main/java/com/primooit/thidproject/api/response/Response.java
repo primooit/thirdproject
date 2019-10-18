@@ -37,8 +37,5 @@ public class Response<T> {
 	}
 
 	
-	public void setData(Posts[] posts) {
-		this.data = data;
-	}
-
+	
 }

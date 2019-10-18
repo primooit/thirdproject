@@ -49,7 +49,7 @@ public class PostsController {
 		Response<Posts> response = new Response<Posts>();
 
 		try {
-			//validateCreatePosts(posts, result);
+			// validateCreatePosts(posts, result);
 			if (result.hasErrors()) {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
@@ -93,7 +93,7 @@ public class PostsController {
 			BindingResult result) {
 		Response<Posts> response = new Response<Posts>();
 		try {
-			//validateUpdatePosts(posts, result);
+			// validateUpdatePosts(posts, result);
 			if (result.hasErrors()) {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
@@ -129,10 +129,11 @@ public class PostsController {
 			return ResponseEntity.badRequest().body(response);
 		}
 
-		response.setData(posts);;
+		response.setData(posts);
+		;
 		return ResponseEntity.ok(response);
 	}
-	
+
 	@DeleteMapping(value = "/{title}")
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<Response<String>> delete(@PathVariable("postId") String title) {
@@ -145,30 +146,27 @@ public class PostsController {
 		postsService.delete(title);
 		return ResponseEntity.ok(new Response<String>());
 	}
-	
+
 	@GetMapping(value = "{page}/{count}")
 	@PreAuthorize("permitAll()")
-    public  ResponseEntity<Response<Page<Posts>>> findAll(HttpServletRequest request, @PathVariable int page, @PathVariable int count) {
-		
+	public ResponseEntity<Response<Page<Posts>>> findAll(HttpServletRequest request, @PathVariable int page,
+			@PathVariable int count) {
+
 		Response<Page<Posts>> response = new Response<Page<Posts>>();
 		Page<Posts> posts = null;
-		User userRequest = userFromRequest(request);
 		posts = postsService.listPosts(page, count);
-				response.setData(posts);
+		response.setData(posts);
 		return ResponseEntity.ok(response);
-    }
-	
-	
-	
-	/*@GetMapping(value = "{getallposts}")
+	}
+
+	@GetMapping(value = "{getallposts}")
 	@PreAuthorize("permitAll()")
-    public  ResponseEntity<Response<Posts>> getAll(HttpServletRequest request) {
-		
+	public ResponseEntity<Response<Posts>> getAllPosts(HttpServletRequest request) {
+
 		Response<Posts> response = new Response<Posts>();
-		User userRequest = userFromRequest(request);
-		Posts[] posts = postsService.findAll();
-				response.setData(posts);
+		Iterable<Posts> posts = postsService.findAll();
+		response.setData((Posts) posts);
 		return ResponseEntity.ok(response);
-    }*/
+	}
 
 }
